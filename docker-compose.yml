@@ -3,7 +3,7 @@ version: "3.9"
 services:
   backend:
     tty: true
-    container_name: back-container
+    container_name: workhub-back-container
     build:
       context: .
       dockerfile: containers/backend/Dockerfile
@@ -29,7 +29,7 @@ services:
 
   frontend:
     tty: true
-    container_name: front-container
+    container_name: workhub-front-container
     build:
       context: .
       dockerfile: containers/frontend/Dockerfile
