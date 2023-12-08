@@ -10,7 +10,7 @@ services:
 
     volumes:
       - .:/code
-      - ./django_project:/code/backend
+      - ./backend:/code/backend
     # ローカルのポート:コンテナのポート
     ports:
       - "8080:8080"
