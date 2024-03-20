@@ -16,3 +16,8 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-data_added"]
+
+
+class Applicants(models.Model):
+    post_id = models.ForeignKey(Post, on_delete=models.CASCADE)
+    applicant_name = models.CharField(max_length=50, default="")
