@@ -1,13 +1,34 @@
-import React from 'react'
+import React from 'react';
+import { Container, Typography, Grid, Button } from '@mui/material';
+import {Link} from "react-router-dom";
 
-function DeleteUserpage
-() {
+
+function DeleteUserpage() {
   return (
-    <div>DeleteUserpage
-      <p>古田さんを削除しますか?</p>
-      <Button>削除</Button>
-      <BUtton>キャンセル</BUtton>
-    </div>
+    <Container>
+      <Grid>
+        <Typography>古田さんを削除しますか?</Typography>
+        <Link to={`/apply`} style={{ textDecoration: 'none' }}>
+          <Button
+            variant='contained'
+          >
+            <Typography variant="h7">
+              削除
+            </Typography>
+          </Button>
+        </Link>
+    
+        <Link to={`/edit`} style={{ textDecoration: 'none' }}>
+          <Button
+            variant='contained'
+          >
+            <Typography variant="h7">
+              キャンセル
+            </Typography>
+          </Button>
+        </Link>
+      </Grid>
+    </Container>
   )
 }
 

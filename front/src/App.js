@@ -1,10 +1,11 @@
 import "./App.css";
-//import { Routes, Route } from "react-router-dom";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Homepage from './pages/HomePage.js';
 import Applypage from './pages/ApplyPage.js';
 import AddUserpage from './pages/AddUserPage.js';
+import EditUserpage from './pages/EditUserPage.js';
+import DeleteUserpage from './pages/DeleteUserPage.js';
 
 import Header from './components/Header.js';
 
@@ -18,6 +19,8 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/apply" element={<Applypage />} />
           <Route path="/add" element={<AddUserpage />} />
+          <Route path="/edit" element={<EditUserpage />} />
+          <Route path="/delete" element={<DeleteUserpage />} />
         </Routes>
       </div>
     </Router>
