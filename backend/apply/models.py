@@ -3,5 +3,5 @@ from post.models import Post
 
 
 class Applicants(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    applicant = models.CharField(max_length=50, default="")
+    post_id = models.ForeignKey(Post, on_delete=models.CASCADE)
+    applicant_name = models.CharField(max_length=50, default="")
