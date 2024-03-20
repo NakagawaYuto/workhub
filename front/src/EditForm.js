@@ -23,7 +23,7 @@ export default class EditForm extends Component{
                 <div>
                     <h1>編集</h1>
                     <form>
-                        {editing ( //?が入る
+                        {editing ? ( //?が入る
                             <div>
                             <input
                             onChange={(e)=>{
