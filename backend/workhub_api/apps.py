@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ApplyConfig(AppConfig):
+class WorkhubApiConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apply'
+    name = 'workhub_api'

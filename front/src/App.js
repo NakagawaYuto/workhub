@@ -2,9 +2,9 @@ import "./App.css";
 //import { Routes, Route } from "react-router-dom";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import Homepage from './Pages/Homepage.js';
-import Applypage from './Pages/Applypage.js';
-import AddUserpage from './Pages/AddUserpage.js';
+import Homepage from './pages/HomePage.js';
+import Applypage from './pages/ApplyPage.js';
+import AddUserpage from './pages/AddUserPage.js';
 
 import Header from './components/Header.js';
 

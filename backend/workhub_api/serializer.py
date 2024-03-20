@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from .models import Applicants
-from post.models import Post
+from .models import Applicants, Post
 
 
 class ApplicantsSerializer(serializers.ModelSerializer):

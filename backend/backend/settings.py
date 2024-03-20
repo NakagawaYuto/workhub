@@ -39,9 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'post.apps.PostConfig',
-    'apply.apps.ApplyConfig',
-    # 'todo.apps.TodoConfig',  # こんな感じで自分の作ったアプリを登録する
+    'workhub_api.apps.WorkhubApiConfig',
 ]
 
 MIDDLEWARE = [

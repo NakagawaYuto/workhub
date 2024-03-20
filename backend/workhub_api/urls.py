@@ -3,8 +3,8 @@ from .views import PostViewSet, ApplicantsViewSet
 
 
 router = routers.DefaultRouter()
-router.register(r'Post', PostViewSet)
-router.register(r'Applicants', ApplicantsViewSet)
+router.register(r'post', PostViewSet)
+router.register(r'applicants', ApplicantsViewSet)
 
 urlpatterns = [
 ]
