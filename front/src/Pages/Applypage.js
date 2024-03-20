@@ -1,35 +1,53 @@
-import React, {useState} from 'react';
-import { Card, Button } from '@mui/material';
+import React, { useState, useEffect} from 'react';
+import axios from 'axios';
+import { Container, Typography, Card, CardContent, Grid, Fab, Box } from '@mui/material';
+import { Link } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
-import SendName from './components/SendName.js';
+//import SendName from './components/SendName.js';
+
+const baseURL = 'http://127.0.0.1:8080/apply/';
 
 const Applypage = () => {
-  const [user, setUser] = useState();
+  // const [users, setUsers] = useState();
 
-  const updateName = () => {
-    setUser("古田"); 
-  }
+  // useEffect(() => {
+  //   const fetchData = () => {
+  //     try {
+  //       axios.get(baseURL).then((response) => {
+  //         setUsers(response.data);
+  //       });
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
 
-  
+  //   fetchData();
+  // }, []);
+
   return (
-    <div>
-      <Card className="alu">
-        <p>アルバイト情報</p>
-        <Button>編集する</Button>
-      </Card>
+    <Container>
+      {/* <Box sx={{ flexGraw: 1}}>
+        <Grid container spacing={ 2 } justifyContent='center'>
+          <Grid item x5={12} md={6}>
+            {users.map((applicants) => (
+              <Link to={`/applicants/${applicants.id}`} style={{ textDecoration: 'none' }}>
+                <Card sx={{ mb: 2 }}>
+                  <CardContent>
+                    <Typography variant='h5'>{applicants.applicant_name}</Typography>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </Grid>
+        </Grid>
+      </Box> */}
+      <Link to='/add' style={{ textDecoration: 'none', position: 'fixed', bottom: '20px', right: '20px' }}>
+        <Fab color='primary' aria-label='add'>
+          <AddIcon />
+        </Fab>
+      </Link>
 
-      <p>応募中：{user} </p>
-
-      <form>
-        <div className="sendName">
-          <input placeholder="学籍番号と名前を入力してください．" type="text" />
-        </div> 
-      </form>
-      <button onClick={updateName}>
-        Set Name
-      </button>
-      <SendName />
-    </div>
+    </Container>
   );
 };
 
