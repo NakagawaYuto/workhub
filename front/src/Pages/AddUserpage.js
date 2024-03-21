@@ -1,110 +1,107 @@
-import React from 'react';
-import useState from 'react';
+import * as React from 'react';
 import axios from "axios";
-import { Container, Typography, Card, CardContent, Grid, Box, Button, TextField } from '@mui/material';
-import { Link } from 'react-router-dom';
-//import { useNavigate } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 
-const baseURL = "http://127.0.0.1:8080/Applicants/"
+const baseURL = 'http://127.0.0.1:8080/applicants/';
 
 const AddUserpage = () => {
-  const [name, setName] = useState('');
+  const navigate = useNavigate();
+  const [post_id, setPost_id] = React.useState('');
+  const [applicant_name, setApplicant_name] = React.useState('');
   
   const addApplicant = async () => {
-    const newApplicant = {
-      name: name,
-    };
-
-    try {
-      const response = await axios.post(baseURL, newApplicant);
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  // const navigate = useNavigate();
-  // const [name, setName] = useState('');
-  
-  // const addApplicants = async () => {
-  //   const nameOk = name.length !== 0;
-    
-  //   if ( nameOk ) {
-  //     await axios.post(baseURL, {
-  //       name: String(name),
-  //     })
-  //     .then(() => {
-  //       setName('');
+    const post_idOk = post_id.length !== 0;
+    const applicant_nameOk = applicant_name.length !== 0;
+   
+    if (post_idOk && applicant_nameOk) {
+      await axios.post(baseURL, {
+        post_id: String(post_id),
+        applicant_name: String(applicant_name),
         
-  //       navigate('/edit');
-  //     })
-  //   }
-  // }
-
-
-
+      })
+      .then(() => {
+        setPost_id('');
+        setApplicant_name('');
+        navigate('/apply');
+      })
+    }
+  }
   return (
-    <Container>
-    <form>       
-      <div className="sendName">
-        <input placeholder="名前を入力してください．" type="text" />
-      </div> 
-    </form>
-    
-    <Box sx={{ flexGraw: 1}}>
-      {/* <TextField
-          fullWidth
-          variant='outlined'
-          placeholder='名前'
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-          sx={{ mb: 4 }}
-        />
-        <Link to={`/apply`} style={{ textDecoration: 'none' }}>
-          <Button
-            variant='contained'
-            color='primary'
-            onClick={addApplicant}
-            sx={{
-              position: 'absolute',
-              right: 0,
-              bottom: -120,
-              width: '150px',
-              height: '50px',
+    <>
+    <Box
+      component="form"
+      noValidate
+      autoComplete="off"
+    >
+      <Grid container alignItems='center' justify='center' direction="column">
+        <Grid item>
+          <Typography 
+            variant="h4" 
+            style={{ 
+              margin: 20, 
+              fontFamily:'serif' 
             }}
           >
-            <Typography variant="h6">
-              追加
-            </Typography>
-          </Button>
-        </Link> */}
-      <Grid container spacing={ 2 } justifyContent='center'>
-        <Grid item x5={12} md={6}>
-          <Link to={'/apply'} style={{ textDecoration: 'none' }}>
-            <Card sx={{ mb: 2 }}>
-              <CardContent>
-                <Typography color='textSecondary'>応募する</Typography>
-              </CardContent>
-            </Card>
-          </Link>
+            アルバイト募集!
+          </Typography>
+        </Grid>
+        <Grid item>
+          <TextField
+            id="outlined-multiline-flexible"
+            label="id"
+            multiline
+            maxRows={4}
+            style={{ 
+              margin: 20, 
+              fontFamily:'serif',
+              width: '50vw',
+            }}
+            onChange={(e)=>{setPost_id(e.target.value)}}
+          />
+        </Grid>
+        <Grid item>
+          <TextField
+            id="outlined-multiline-flexible"
+            label="おname"
+            multiline
+            maxRows={4}
+            style={{ 
+              margin: 20, 
+              fontFamily:'serif',
+              width: '50vw',
+            }}
+            onChange={(e)=>{setApplicant_name(e.target.value)}}
+          />
+        </Grid>
+        
+        <Grid item>
+          <Button 
+            variant="contained" 
+            onClick={() => {
+              addApplicant();
+            }}
+            style={{
+              width: 100,
+              color: "#e0f2f1",
+              fontSize: 25,
+              fontFamily: 'serif',
+              background: "#3c3c3c",
+              padding: 3,
+              borderRadius: 5,
+              boxShadow: '5px 5px 5px rbga(0,0,0,0.3)',
+            }}
+            size="large"
+          >応募!</Button>
         </Grid>
       </Grid>
-    </Box>
-    
-    <Grid container spacing={4}>
-        <Link to={`/apply`} style={{ textDecoration: 'none' }}>
-          <Button style={{ textDecoration: 'none', position: 'fixed', bottom:'10px', left: '10px' }}
-            variant='contained'
-          >
-            <Typography variant="h7">
-              戻る
-            </Typography>
-          </Button>
-        </Link>
-      </Grid>
-  </Container>
-
+      </Box>
+    </>
   )
 }
 
-export default AddUserpage
+export default AddUserpage;
