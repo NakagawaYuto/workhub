@@ -37,10 +37,10 @@ function Postpage(){
             await axios.post(baseURL,{
                 title: String(title),
                 hostname: String(hostname),
-                deadline: DateTime(deadline),
+                deadline: String(deadline),
                 date_and_location: Text(date_and_location),
-                num_of_people: Integer(num_of_people),
-                estimated_time: Integer(estimated_time),
+                num_of_people: String(num_of_people),
+                estimated_time: String(estimated_time),
                 target: Text(target),
                 tag: Text(tag),
                 body: Text(body),
