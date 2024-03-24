@@ -28,7 +28,7 @@ const AddUserpage = () => {
       .then(() => {
         setPost_id('');
         setApplicant_name('');
-        navigate('/apply');
+        navigate('/');
       })
     }
   }
@@ -54,7 +54,7 @@ const AddUserpage = () => {
         <Grid item>
           <TextField
             id="outlined-multiline-flexible"
-            label="id"
+            label="応募するアルバイトのidを記入してください"
             multiline
             maxRows={4}
             style={{ 
@@ -68,7 +68,7 @@ const AddUserpage = () => {
         <Grid item>
           <TextField
             id="outlined-multiline-flexible"
-            label="おname"
+            label="お名前を記入してください"
             multiline
             maxRows={4}
             style={{ 
@@ -81,7 +81,7 @@ const AddUserpage = () => {
         </Grid>
         
         <Grid item>
-        <Link to={'/'} style={{ textDecoration: 'none', position: 'fixed', bottom: '20px', right: '20px' }}>
+        <Link to={`/`} style={{ textDecoration: 'none', position: 'fixed', bottom: '20px', right: '20px' }}>
           <Button 
             variant="contained" 
             onClick={() => {
@@ -98,7 +98,7 @@ const AddUserpage = () => {
               boxShadow: '5px 5px 5px rbga(0,0,0,0.3)',
             }}
             size="large"
-          >応募!</Button>
+          >応募</Button>
           </ Link>
         </Grid>
       </Grid>
