@@ -17,9 +17,9 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/apply" element={<Applypage />} />
+          <Route path="/post/:id" element={<Applypage />} />
           <Route path="/add" element={<AddUserpage />} />
-          <Route path="/edit" element={<EditUserpage />} />
+          <Route path="/applicants/:id" element={<EditUserpage />} />
           <Route path="/delete" element={<DeleteUserpage />} />
         </Routes>
       </div>

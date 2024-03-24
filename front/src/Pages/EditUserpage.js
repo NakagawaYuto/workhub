@@ -1,24 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Container, Typography, Grid, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-const baseURL = "http://127.0.0.1:8080/Applicants/"
+const applyURL = "http://127.0.0.1:8080/Applicants/"
+
 
 function EditUserpage() {
-  // const [name, setName] = React.useState(null);
-  // const [delTarget, setDelTarget] = React.useState(null);
+  const [posts, setPosts] = useState([]);
 
-  // // 初回ロード時の処理を記述する.
-  // React.useEffect(() => 
-  //   {
-  //     axios.get(baseURL).then((response) => {
-  //       setName(response.data);
-  //     });
-  //   }, []);
-  // if (!applicants) return null;
+
+  // useEffect(() => {
+  //   const fetchData = () => {
+  //     try {
+  //       axios.get(applyURL).then((response) => {
+  //         setPosts(response.data);
+  //       });
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
 
   // const deleteName = (id) => {
-  //   console.log(baseURL+String(id)+'/');
+  //   console.log(applyURL+String(id)+'/');
   //   axios.delete(baseURL+String(id)+'/')
   //   .then(() => {
   //     setName([]);
@@ -27,6 +35,7 @@ function EditUserpage() {
   //     });
   //   })
   // }
+  
 
   return (
     <Container>
@@ -55,7 +64,7 @@ function EditUserpage() {
         </Link>
       </Grid>
       <Grid>
-        <Link to={`/apply`} style={{ textDecoration: 'none' }}>
+        <Link to={'/'} style={{ textDecoration: 'none' }}>
           <Button
             variant='contained'
           >
@@ -66,7 +75,7 @@ function EditUserpage() {
         </Link>
       </Grid>
       <Grid>
-      <Link to={`/apply`} style={{ textDecoration: 'none', position: 'fixed', bottom:'10px', left: '10px' }}>
+      <Link to={`/`} style={{ textDecoration: 'none', position: 'fixed', bottom:'10px', left: '10px' }}>
         <Button
           variant='contained'
         >
