@@ -53,7 +53,7 @@ function EditUserpage() {
 
 
       <Grid>
-        <Link to={`/delete`} style={{ textDecoration: 'none' }}>
+        <Link to={`/applicants/1/delete`} style={{ textDecoration: 'none' }}>
           <Button
             variant='contained'
           >
@@ -64,7 +64,7 @@ function EditUserpage() {
         </Link>
       </Grid>
       <Grid>
-        <Link to={'/'} style={{ textDecoration: 'none' }}>
+        <Link to={`/post/`} style={{ textDecoration: 'none' }}>
           <Button
             variant='contained'
           >

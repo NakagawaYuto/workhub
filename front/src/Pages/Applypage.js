@@ -102,11 +102,11 @@ const Applypage = () => {
           </Button>
         </Link>
       </Grid>
-      {/* <Link to='/add' style={{ textDecoration: 'none', position: 'fixed', bottom: '20px', right: '20px' }}>
+      <Link to='/add' style={{ textDecoration: 'none', position: 'fixed', bottom: '20px', right: '20px' }}>
         <Fab color='primary' aria-label='add'>
           <AddIcon />
         </Fab>
-      </Link> */}
+      </Link>
     </Container>
   );
 }

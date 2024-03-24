@@ -2,6 +2,7 @@ import * as React from 'react';
 import axios from "axios";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import Link from '@mui/material/Link';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -80,6 +81,7 @@ const AddUserpage = () => {
         </Grid>
         
         <Grid item>
+        <Link to={'/'} style={{ textDecoration: 'none', position: 'fixed', bottom: '20px', right: '20px' }}>
           <Button 
             variant="contained" 
             onClick={() => {
@@ -97,6 +99,7 @@ const AddUserpage = () => {
             }}
             size="large"
           >応募!</Button>
+          </ Link>
         </Grid>
       </Grid>
       </Box>

@@ -20,7 +20,7 @@ function App() {
           <Route path="/post/:id" element={<Applypage />} />
           <Route path="/add" element={<AddUserpage />} />
           <Route path="/applicants/:id" element={<EditUserpage />} />
-          <Route path="/delete" element={<DeleteUserpage />} />
+          <Route path="/applicants/:id/delete" element={<DeleteUserpage />} />
         </Routes>
       </div>
     </Router>
