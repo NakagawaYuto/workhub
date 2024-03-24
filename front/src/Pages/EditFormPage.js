@@ -1,130 +1,69 @@
-import React, { Component } from "react"
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
+ 
+const baseURL = "http://localhost:8080/post/"
 
-export default class EditForm extends Component{
-    constructor(props){
-        this.state = {
-            title: "",
-            hostname: "",
-            deadline: "",
-            date_and_location: "",
-            num_of_people: "",
-            estimated_time: "",
-            target: "",
-            tag: "",
-            body: "",
-            editing: true,
-        }
-        this.handleEditing = this.handleEditing.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-    }
-        render () {
-            const { editing } = this.state
-            return (
-                <div>
-                    <h1>編集</h1>
-                    <form>
-                        {editing ? ( //?が入る
-                            <div>
-                            <input
-                            onChange={(e)=>{
-                                this.setState({title: e.target.value})
-                            }}
-                            type="text"
-                            value={this.state.title}
-                            placeholder="タイトル"
-                            />
-                            <input
-                            onChange={(e)=>{
-                                this.setState({hostname: e.target.value})
-                            }}
-                            type="text"
-                            value={this.state.hostname}
-                            placeholder="投稿する人の名前"
-                            />
-                            <input
-                            onChange={(e)=>{
-                                this.setState({deadline: e.target.value})
-                            }}
-                            type="datetime-local"
-                            value={this.state.deadline}
-                            placeholder="募集期間"
-                            />
-                            <input
-                            onChange={(e)=>{
-                                this.setState({date_and_location: e.target.value})
-                            }}
-                            type="text"
-                            value={this.state.date_and_location}
-                            placeholder="日時・場所"
-                            />
-                            <input
-                            onChange={(e)=>{
-                                this.setState({num_of_people: e.target.value})
-                            }}
-                            type="number"
-                            value={this.state.num_of_people}
-                            placeholder="人数"
-                            />
-                            <input
-                            onChange={(e)=>{
-                                this.setState({estimated_time: e.target.value})
-                            }}
-                            type="number"
-                            value={this.state.estimated_time}
-                            placeholder="見込み労働時間"
-                            />
-                            <input
-                            onChange={(e)=>{
-                                this.setState({target: e.target.value})
-                            }}
-                            type="text"
-                            value={this.state.target}
-                            placeholder="対象者"
-                            />
-                            <input
-                            onChange={(e)=>{
-                                this.setState({tag: e.target.value})
-                            }}
-                            type="text"
-                            value={this.state.tag}
-                            placeholder="タグ"
-                            />
-                            <input
-                            onChange={(e)=>{
-                                this.setState({body: e.target.value})
-                            }}
-                            type="text"
-                            value={this.state.body}
-                            placeholder="内容"
-                            />
-    
-                            <button onClick={this.handleSubmit}>保存</button>
-                        </div>
-                        )}
-                    </form>
-                </div>
-            )
-        }
-        handleEditing(e) {
-            e.preventDefault()
-            this.setState({
-                editing: !this.state.editing
-            })
-        }
-        handleSubmit(e){
-            e.preventDefault()
-            if (!this.state.title) return;
-            this.setState({
-                title: this.state.title,
-                hostname: this.state.hostname,
-                deadline: this.state.deadline,
-                date_and_location:this.state.date_and_location,
-                num_of_people: this.state.num_of_people,
-                estimated_time: this.state.estimated_people,
-                target: this.state.target,
-                tag: this.state.tag,
-                body: this.state.body,
-            }
-            )
-        }
+const EditForm = () => {
+    const navigate = useNavigate();
+    const {user_id} = useParams();
+    const[posts,Seposts] = useState();
+    const[title, setTitle] = useState();
+    const[hostname,setHostname] = useState();
+    const[deadline, setDeadline] = useState();
+    const[date_and_location, setDate_and_location] = useState();
+    const[num_of_people, setNum_of_people] = useState();
+    const[estimated_people, setEstimated_people] = useState();
+    const[target, setTarget] = useState();
+    const[tag, setTag] = useState();
+    const[body, setBody] = useState();
+    const[data_added, setData_added] = useState();
+    const[users, setUsers] = useState();
+}
+
+React.useEffect(() => {
+    axios.get(baseURL).then((response) =>{
+        const {title, hostname, deadline,date_and_location, num_of_people, estimated_people, target,tag,body,data_added} = response.date;
+        setTitle(title)
+        setHostname(hostname)
+        setDeadline(deadline)
+        setDate_and_location(date_and_location)
+        setNum_of_people(num_of_people)
+        setEstimated_people(estimated_people)
+        setTarget(target)
+        setTag(tag)
+        setBody(body)
+        setData_added(data_added)
+    });
+
+
+},[]);
+if(!users) return null;
+
+const user = users.find(user => user.id === parseInt(user_id));
+
+const updatePost = () => {
+    axios.patch(baseURL,{
+        title: String(title),
+        hostname: String(hostname),
+        deadline: String(deadline),
+        date_and_location: String(date_and_location),
+        num_of_people: String(num_of_people),
+        estimated_people: String(estimated_people),
+        target: String(target),
+        tag: String(tag),
+        body: String(body),
+        data_added: String(data_added)
+    })
+    .then(() => {
+        setTitle('')
+        setHostname('')
+        setDeadline('')
+        setDate_and_location('')
+        setNum_of_people('')
+        setEstimated_people('')
+        setTarget('')
+        setTag('')
+        setBody('')
+        setData_added('')
+    })
 }
